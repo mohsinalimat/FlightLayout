@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 public enum VerticalAlign {
-    case Above          // Align vertically Above
-    case Below          // Align vertically Below
-    case Center         // Align center.y vertically
-    case Top            // Align vertically to the top
-    case Base           // Align vertically to the base
+    case above          // Align vertically Above
+    case below          // Align vertically Below
+    case center         // Align center.y vertically
+    case top            // Align vertically to the top
+    case base           // Align vertically to the base
 }
 
 public enum HorizontalAlign {
-    case Left           // Align horizontally to the Left
-    case Right          // Align horizontally to the Right
-    case Center         // Align center.y horizontally
-    case RightEdge      // Align horizontally to the Right Edge
-    case LeftEdge       // Align horizontally to the Left Edge
+    case left           // Align horizontally to the Left
+    case right          // Align horizontally to the Right
+    case center         // Align center.y horizontally
+    case rightEdge      // Align horizontally to the Right Edge
+    case leftEdge       // Align horizontally to the Left Edge
 }
 
 
@@ -43,10 +43,10 @@ extension UIView {
      - parameter horizontalOffset: horizontal offset to apply to the calculated relative frame, defautls to 0
      - parameter verticalOffset:   vertical offset to apply to the calculated relative frame, defautls to 0
      */
-    func align(toFrame  frame            : CGRect? = nil,
+    public func align(toFrame  frame            : CGRect? = nil,
                withSize size             : CGSize? = nil,
-                        horizontal       : HorizontalAlign = .Center,
-                        vertical         : VerticalAlign = .Center,
+                        horizontal       : HorizontalAlign = .center,
+                        vertical         : VerticalAlign = .center,
                         horizontalOffset : CGFloat = 0.0,
                         verticalOffset   : CGFloat = 0.0) {
         
@@ -57,7 +57,7 @@ extension UIView {
                                   horizontalOffset   : horizontalOffset,
                                   verticalOffset     : verticalOffset)
         
-        if CGRectEqualToRect(self.frame, newRect) == false {
+        if self.frame.equalTo(newRect) == false {
             self.frame = newRect
         }
     }
@@ -84,15 +84,15 @@ extension UIView {
      */
     func rectAligned(toFrame  frame            : CGRect?  = nil,
                      withSize size             : CGSize? = nil,
-                              horizontal       : HorizontalAlign = .Center,
-                              vertical         : VerticalAlign = .Center,
+                              horizontal       : HorizontalAlign = .center,
+                              vertical         : VerticalAlign = .center,
                               horizontalOffset : CGFloat = 0.0,
                               verticalOffset   : CGFloat = 0.0) -> CGRect {
         
         var referenceFrame = frame
         
         if let relativeFrame = frame {
-            if CGRectEqualToRect(CGRectZero, relativeFrame) {
+            if CGRect.zero.equalTo(relativeFrame) {
                 if let superviewFrame = superview?.bounds {
                     referenceFrame = superviewFrame
                 }
@@ -133,23 +133,23 @@ extension UIView {
      Private Method. Calculates a horizontally aligned frame for the source frame relative to
      the destination frame
      */
-    final private func alignedHorizontalOrigin(forRect sourceRect      : CGRect,
+    final fileprivate func alignedHorizontalOrigin(forRect sourceRect      : CGRect,
                                                relativeToRect toRect   : CGRect,
                                                withAlignment alignment : HorizontalAlign) -> CGFloat {
         
         var origin = sourceRect.origin.x
         
         switch (alignment) {
-        case .Left:
+        case .left:
             origin = toRect.origin.x - sourceRect.size.width;
-        case .Right:
-            origin = CGRectGetMaxX(toRect);
-        case .Center:
+        case .right:
+            origin = toRect.maxX;
+        case .center:
             origin = toRect.origin.x + ((toRect.size.width - sourceRect.size.width) / 2.0);
-        case .LeftEdge:
+        case .leftEdge:
             origin = toRect.origin.x;
-        case .RightEdge:
-            origin = CGRectGetMaxX(toRect) - sourceRect.size.width;
+        case .rightEdge:
+            origin = toRect.maxX - sourceRect.size.width;
         }
         
         return round(origin)
@@ -159,22 +159,22 @@ extension UIView {
      Private Method. Calculates a vertically aligned frame for the source frame relative to
      the destination frame
      */
-    final private func alignedVerticalOrigin(forRect sourceRect      : CGRect,
+    final fileprivate func alignedVerticalOrigin(forRect sourceRect  : CGRect,
                                              relativeToRect toRect   : CGRect,
                                              withAlignment alignment : VerticalAlign) -> CGFloat {
         var origin = sourceRect.origin.x
         
         switch (alignment) {
-        case .Top:
+        case .top:
             origin = toRect.origin.y
-        case .Base:
-            origin = CGRectGetMaxY(toRect) - sourceRect.size.height
-        case .Center:
+        case .base:
+            origin = toRect.maxY - sourceRect.size.height
+        case .center:
             origin = toRect.origin.y + ((toRect.size.height - sourceRect.size.height) / 2.0)
-        case .Above:
+        case .above:
             origin = toRect.origin.y - sourceRect.size.height
-        case .Below:
-            origin = CGRectGetMaxY(toRect)
+        case .below:
+            origin = toRect.maxY
         }
         
         return round(origin)
