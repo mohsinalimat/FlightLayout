@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A8FD35F1EA71147001B550C /* SwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8FD3551EA71147001B550C /* SwiftLayout.framework */; };
 		3A8FD3641EA71147001B550C /* SwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FD3631EA71147001B550C /* SwiftLayoutTests.swift */; };
 		3A8FD3661EA71147001B550C /* SwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A8FD3581EA71147001B550C /* SwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A8FD3711EA71177001B550C /* SwiftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FD3701EA71177001B550C /* SwiftLayout.swift */; };
@@ -46,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A8FD35F1EA71147001B550C /* SwiftLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
