@@ -45,5 +45,5 @@ The installation instruction below for iOS.
 6. Add the paths to the frameworks you want to use under “Input Files” within the carthage build phase as follows e.g.:
 
 ```
-     $(SRCROOT)/Carthage/Build/iOS/SwiftLayout.framework	
+    $(SRCROOT)/Carthage/Build/iOS/SwiftLayout.framework	
 ```
