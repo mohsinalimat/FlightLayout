@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftLayout-Demo/SwiftLayout-Demo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftLayout/SwiftLayout.xcodeproj">
    </FileRef>
 </Workspace>

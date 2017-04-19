@@ -43,14 +43,14 @@ extension UIView {
      - parameter horizontalOffset: horizontal offset to apply to the calculated relative frame, defautls to 0
      - parameter verticalOffset:   vertical offset to apply to the calculated relative frame, defautls to 0
      */
-    public func align(toFrame  frame            : CGRect? = nil,
-               withSize size             : CGSize? = nil,
-                        horizontal       : HorizontalAlign = .center,
-                        vertical         : VerticalAlign = .center,
-                        horizontalOffset : CGFloat = 0.0,
-                        verticalOffset   : CGFloat = 0.0) {
+    public func align(toFrame frame   : CGRect? = nil,
+                      withSize size    : CGSize? = nil,
+                      horizontal       : HorizontalAlign = .center,
+                      vertical         : VerticalAlign = .center,
+                      horizontalOffset : CGFloat = 0.0,
+                      verticalOffset   : CGFloat = 0.0) {
         
-        let newRect = rectAligned(toFrame            : frame,
+        let newRect = alignedRect(toFrame            : frame,
                                   withSize           : size,
                                   horizontal         : horizontal,
                                   vertical           : vertical,
@@ -68,8 +68,8 @@ extension UIView {
      This is a handy method to use when performing animations, you can ask the view to return
      the frame it would align to without aligning it self to the returned value.
      
-     See the CGRect Extension provided with this framework, you can query a CGRect 
-     for it's bounds and center. Since the frame property is not animatable, you 
+     See the CGRect Extension provided with this framework, you can query a CGRect
+     for it's bounds and center. Since the frame property is not animatable, you
      may cancreate an animation group with two separate animations, one for position,
      and one for hte bounds
      
@@ -82,12 +82,12 @@ extension UIView {
      
      - returns: returns the final aligned frame
      */
-    func rectAligned(toFrame  frame            : CGRect?  = nil,
-                     withSize size             : CGSize? = nil,
-                              horizontal       : HorizontalAlign = .center,
-                              vertical         : VerticalAlign = .center,
-                              horizontalOffset : CGFloat = 0.0,
-                              verticalOffset   : CGFloat = 0.0) -> CGRect {
+    func alignedRect(toFrame frame    : CGRect?  = nil,
+                     withSize size    : CGSize? = nil,
+                     horizontal       : HorizontalAlign = .center,
+                     vertical         : VerticalAlign = .center,
+                     horizontalOffset : CGFloat = 0.0,
+                     verticalOffset   : CGFloat = 0.0) -> CGRect {
         
         var referenceFrame = frame
         
@@ -120,7 +120,7 @@ extension UIView {
         calculatedFrame.origin.x += horizontalOffset
         calculatedFrame.origin.y += verticalOffset
         
-        return calculatedFrame
+        return calculatedFrame.integral
     }
 }
 
@@ -134,8 +134,8 @@ extension UIView {
      the destination frame
      */
     final fileprivate func alignedHorizontalOrigin(forRect sourceRect      : CGRect,
-                                               relativeToRect toRect   : CGRect,
-                                               withAlignment alignment : HorizontalAlign) -> CGFloat {
+                                                   relativeToRect toRect   : CGRect,
+                                                   withAlignment alignment : HorizontalAlign) -> CGFloat {
         
         var origin = sourceRect.origin.x
         
@@ -160,8 +160,8 @@ extension UIView {
      the destination frame
      */
     final fileprivate func alignedVerticalOrigin(forRect sourceRect  : CGRect,
-                                             relativeToRect toRect   : CGRect,
-                                             withAlignment alignment : VerticalAlign) -> CGFloat {
+                                                 relativeToRect toRect   : CGRect,
+                                                 withAlignment alignment : VerticalAlign) -> CGFloat {
         var origin = sourceRect.origin.x
         
         switch (alignment) {
