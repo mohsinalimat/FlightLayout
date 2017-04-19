@@ -1,10 +1,10 @@
 # Demo App Example
 
-Below is aquick example of the alignment logic setup in the demo app provided with the application, producing the following layout:
+Below is a quick example of the alignment logic setup in the demo app provided with the application, producing the following layout:
 
-
-![alt tag] (/SimulatorImage.png?raw=true width='375' height='667')
-
+<p align="center">
+<img align="center"  src="https://github.com/AntonTheDev/SwiftLayout/blob/master/Documentation/SimulatorImage.png?raw=true" width="375" height="667" />
+</p>
 
 ```
 
