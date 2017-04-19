@@ -27,8 +27,8 @@ The installation instruction below for iOS.
 1. Create/Update the Cartfile with with the following
 	
 ```
-	# SwiftLayout
-	git "https://github.com/AntonTheDev/SwiftLayout.git" >= 0.7
+    # SwiftLayout
+    git "https://github.com/AntonTheDev/SwiftLayout.git" >= 0.7
 
 ```
 
@@ -39,12 +39,11 @@ The installation instruction below for iOS.
 5. Navigate to the targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script with the following content:
 
 ```
-  	/usr/local/bin/carthage copy-frameworks
+    /usr/local/bin/carthage copy-frameworks
 ```
   	
 6. Add the paths to the frameworks you want to use under “Input Files” within the carthage build phase as follows e.g.:
 
 ```
- 	$(SRCROOT)/Carthage/Build/iOS/SwiftLayout.framework
-  	
+     $(SRCROOT)/Carthage/Build/iOS/SwiftLayout.framework	
 ```
